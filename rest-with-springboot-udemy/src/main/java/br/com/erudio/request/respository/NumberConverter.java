@@ -1,6 +1,4 @@
-package br.com.erudio.request.converters;
-
-import br.com.erudio.exception.UnsupportedMathOperationException;
+package br.com.erudio.request.respository;
 
 public class NumberConverter {
 	public static Double convertToDouble(String strNumber) {
@@ -19,11 +17,11 @@ public class NumberConverter {
 		return number.matches("[-+]?[0-9]*\\.?[0-9]+");
 	}
 
-	public static void numericArguments(String[] numbers) {
-		for (String number : numbers) {
-			if (!isNumeric(number)) {
-				throw new UnsupportedMathOperationException("Please set a numeric value!");
-			}
-		}
-	}
+//	public static void numericArguments(String[] numbers) {
+//		for (String number : numbers) {
+//			if (!isNumeric(number)) {
+//				throw new UnsupportedMathOperationException("Please set a numeric value!");
+//			}
+//		}
+//	}
 }
