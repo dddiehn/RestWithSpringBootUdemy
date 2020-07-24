@@ -35,6 +35,10 @@
 		<java.version>
 			11
 		</java.version>
+		<start-class>
+			br.com.erudio.Startup
+		</start-class>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -71,6 +75,18 @@
 			<artifactId>
 				mysql-connector-java
 			</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>
+				com.github.dozermapper
+			</groupId>
+			<artifactId>
+				dozer-core
+			</artifactId>
+			<version>
+				6.4.1
+			</version>
 		</dependency>
 
 		<dependency>
