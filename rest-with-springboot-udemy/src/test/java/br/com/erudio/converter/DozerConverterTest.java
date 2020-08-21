@@ -25,7 +25,7 @@ public class DozerConverterTest {
 		Assert.assertEquals(Long.valueOf(0L),   output.getId());;
 		Assert.assertEquals("First Name Test0", output.getFirstName());;
 		Assert.assertEquals("Last Name Test0",  output.getLastName());
-		Assert.assertEquals("Address Test0",    output.getLastName());
+		Assert.assertEquals("Address Test0",    output.getAddress());
 		Assert.assertEquals("Male",             output.getGender());
 	}
 
@@ -37,13 +37,13 @@ public class DozerConverterTest {
 		Assert.assertEquals(Long.valueOf(0L),   outputZero.getId());;
 		Assert.assertEquals("First Name Test0", outputZero.getFirstName());;
 		Assert.assertEquals("Last Name Test0",  outputZero.getLastName());;
-		Assert.assertEquals("address Test0",    outputZero.getAddress());;
+		Assert.assertEquals("Address Test0",    outputZero.getAddress());;
 		
 		PersonVO outputSeven = outputList.get(7);
 
 		Assert.assertEquals(Long.valueOf(7L),   outputSeven.getId());
 		Assert.assertEquals("First Name Test7", outputSeven.getFirstName());;
-		Assert.assertEquals("Last Name Test7",  outputSeven.getAddress());
+		Assert.assertEquals("Last Name Test7",  outputSeven.getLastName());
 		Assert.assertEquals("Female",           outputSeven.getGender());
 
 		PersonVO outputTwelve = outputList.get(12);
