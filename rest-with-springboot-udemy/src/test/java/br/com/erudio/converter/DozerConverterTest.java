@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import br.com.erudio.converter.mocks.MockPerson;
 import br.com.erudio.data.model.Person;
-import br.com.erudio.data.vo.PersonVO;
+import br.com.erudio.data.vo.v1.PersonVO;
 
 public class DozerConverterTest {
 
@@ -22,7 +22,7 @@ public class DozerConverterTest {
 	@Test
 	public void parseEntityToVOTest() {
 		PersonVO output = DozerConverter.parseObject(inputObject.mockEntity(), PersonVO.class);
-		Assert.assertEquals(Long.valueOf(0L),   output.getId());;
+		Assert.assertEquals(Long.valueOf(0L),   output.getKey());;
 		Assert.assertEquals("First Name Test0", output.getFirstName());;
 		Assert.assertEquals("Last Name Test0",  output.getLastName());
 		Assert.assertEquals("Address Test0",    output.getAddress());
@@ -34,21 +34,21 @@ public class DozerConverterTest {
 		List<PersonVO> outputList = DozerConverter.parseListObjects(inputObject.mockEntityList(), PersonVO.class);
 		PersonVO outputZero = outputList.get(0);
 
-		Assert.assertEquals(Long.valueOf(0L),   outputZero.getId());;
+		Assert.assertEquals(Long.valueOf(0L),   outputZero.getKey());;
 		Assert.assertEquals("First Name Test0", outputZero.getFirstName());;
 		Assert.assertEquals("Last Name Test0",  outputZero.getLastName());;
 		Assert.assertEquals("Address Test0",    outputZero.getAddress());;
 		
 		PersonVO outputSeven = outputList.get(7);
 
-		Assert.assertEquals(Long.valueOf(7L),   outputSeven.getId());
+		Assert.assertEquals(Long.valueOf(7L),   outputSeven.getKey());
 		Assert.assertEquals("First Name Test7", outputSeven.getFirstName());;
 		Assert.assertEquals("Last Name Test7",  outputSeven.getLastName());
 		Assert.assertEquals("Female",           outputSeven.getGender());
 
 		PersonVO outputTwelve = outputList.get(12);
 
-		Assert.assertEquals(Long.valueOf(12L),   outputTwelve.getId());
+		Assert.assertEquals(Long.valueOf(12L),   outputTwelve.getKey());
 		Assert.assertEquals("First Name Test12", outputTwelve.getFirstName());
 		Assert.assertEquals("Last Name Test12",  outputTwelve.getLastName());
 		Assert.assertEquals("Address Test12",    outputTwelve.getAddress());
