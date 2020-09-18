@@ -1,6 +1,8 @@
 package br.com.erudio.controller;
 
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 import br.com.erudio.data.vo.v1.BookVO;
 import br.com.erudio.services.BookServices;
@@ -20,12 +22,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+@Api(value = "Book Endpoint", description = "Description for book", tags = {"BookEndpoint"})
 @RestController
 @RequestMapping("api/book/v1")
 public class BookController {
 	@Autowired
 	private BookServices service;
 
+	@ApiOperation (value = "Find a book")
 	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml", "application/x-yaml" })
 	public BookVO findById(@PathVariable("id") Long id) {
 		BookVO bookVO = service.findById(id);
@@ -33,6 +37,7 @@ public class BookController {
 		return bookVO;
 	}
 
+	@ApiOperation (value = "Find all the books")
 	@GetMapping(produces = { "application/json", "application/xml", "application/x-yaml" })
 	public List<BookVO> findAll() {
 		List<BookVO> books = service.findAll();
@@ -45,6 +50,7 @@ public class BookController {
 		return books;
 	}
 
+	@ApiOperation (value = "Create a book")
 	@PostMapping(produces = { "application/json", "application/xml", "application/x-yaml"},
 		consumes = { "application/json", "application/xml", "application/x-yaml"})
 	public BookVO create(@RequestBody BookVO book) {
@@ -53,6 +59,7 @@ public class BookController {
 		return bookVO;
 	}
 
+	@ApiOperation (value = "Update a book")
 	@PutMapping(produces = { "application/json", "application/xml", "application/x-yaml"},
 		consumes = { "application/json", "application/xml", "application/x-yaml"})
 	public BookVO update(@RequestBody BookVO book) {
@@ -61,6 +68,7 @@ public class BookController {
 		return bookVO;
 	}
 
+	@ApiOperation (value = "Delete a book")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") Long id) {
 		service.delete(id);

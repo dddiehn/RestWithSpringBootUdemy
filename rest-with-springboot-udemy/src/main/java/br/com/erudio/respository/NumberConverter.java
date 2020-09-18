@@ -1,4 +1,4 @@
-package br.com.erudio.request.respository;
+package br.com.erudio.respository;
 
 public class NumberConverter {
 	public static Double convertToDouble(String strNumber) {

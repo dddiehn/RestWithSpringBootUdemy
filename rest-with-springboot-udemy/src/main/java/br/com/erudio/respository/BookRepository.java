@@ -1,4 +1,4 @@
-package br.com.erudio.request.respository;
+package br.com.erudio.respository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
