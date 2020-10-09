@@ -13,7 +13,7 @@ import br.com.erudio.converter.DozerConverter;
 import br.com.erudio.data.model.Book;
 import br.com.erudio.data.vo.v1.BookVO;
 import br.com.erudio.exception.ResourceNotFoundException;
-import br.com.erudio.respository.BookRepository;
+import br.com.erudio.repository.BookRepository;
 
 @Service
 public class BookServices {

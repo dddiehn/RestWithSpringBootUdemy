@@ -2,6 +2,7 @@ package br.com.erudio.data.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,41 +21,41 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails, Serializable{
+public class User implements UserDetails, Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
-
-	@Column(name = "userName")
+	
+	@Column(name = "user_name", unique = true)
 	private String userName;
-
-	@Column(name = "fullName")
+	
+	@Column(name = "full_name")
 	private String fullName;
-
+	
 	@Column(name = "password")
 	private String password;
-
+	
 	@Column(name = "account_non_expired")
-	private Boolean account_non_expired;
+	private Boolean accountNonExpired;
 	
 	@Column(name = "account_non_locked")
 	private Boolean accountNonLocked;
 	
 	@Column(name = "credentials_non_expired")
-	private Boolean credentials_non_expired;
+	private Boolean credentialsNonExpired;
 	
 	@Column(name = "enabled")
 	private Boolean enabled;
-
+	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "user_permission", joinColumns = {@JoinColumn (name = "id_user")},
-		inverseJoinColumns = { @JoinColumn (name = "id_permission")})
+	@JoinTable(name = "user_permission", joinColumns = { @JoinColumn (name = "id_user") },
+			inverseJoinColumns = { @JoinColumn (name = "id_permission")})
 	private List<Permission> permissions;
-
+	
 	public List<String> getRoles() {
 		List<String> roles = new ArrayList<String>();
 		for (Permission permission : this.permissions) {
@@ -87,12 +88,12 @@ public class User implements UserDetails, Serializable{
 		this.fullName = fullName;
 	}
 
-	public Boolean getAccount_non_expired() {
-		return account_non_expired;
+	public Boolean getAccountNonExpired() {
+		return accountNonExpired;
 	}
 
-	public void setAccount_non_expired(Boolean account_non_expired) {
-		this.account_non_expired = account_non_expired;
+	public void setAccountNonExpired(Boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
 	}
 
 	public Boolean getAccountNonLocked() {
@@ -103,12 +104,12 @@ public class User implements UserDetails, Serializable{
 		this.accountNonLocked = accountNonLocked;
 	}
 
-	public Boolean getCredentials_non_expired() {
-		return credentials_non_expired;
+	public Boolean getCredentialsNonExpired() {
+		return credentialsNonExpired;
 	}
 
-	public void setCredentials_non_expired(Boolean credentials_non_expired) {
-		this.credentials_non_expired = credentials_non_expired;
+	public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
 	}
 
 	public Boolean getEnabled() {
@@ -132,7 +133,7 @@ public class User implements UserDetails, Serializable{
 	}
 
 	@Override
-	public java.util.Collection<? extends GrantedAuthority> getAuthorities() {
+	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return this.permissions;
 	}
 
@@ -142,37 +143,37 @@ public class User implements UserDetails, Serializable{
 	}
 
 	@Override
-	public boolean isAccountNonLocked() {
-		return this.isAccountNonLocked();
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return this.isAccountNonExpired();
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return this.isEnabled();
-	}
-
-	@Override
 	public String getUsername() {
 		return this.userName;
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return this.isAccountNonExpired();
+		return this.accountNonExpired;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return this.accountNonLocked;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return this.credentialsNonExpired;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return this.enabled;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((accountNonExpired == null) ? 0 : accountNonExpired.hashCode());
 		result = prime * result + ((accountNonLocked == null) ? 0 : accountNonLocked.hashCode());
-		result = prime * result + ((account_non_expired == null) ? 0 : account_non_expired.hashCode());
-		result = prime * result + ((credentials_non_expired == null) ? 0 : credentials_non_expired.hashCode());
+		result = prime * result + ((credentialsNonExpired == null) ? 0 : credentialsNonExpired.hashCode());
 		result = prime * result + ((enabled == null) ? 0 : enabled.hashCode());
 		result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -191,20 +192,20 @@ public class User implements UserDetails, Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (accountNonExpired == null) {
+			if (other.accountNonExpired != null)
+				return false;
+		} else if (!accountNonExpired.equals(other.accountNonExpired))
+			return false;
 		if (accountNonLocked == null) {
 			if (other.accountNonLocked != null)
 				return false;
 		} else if (!accountNonLocked.equals(other.accountNonLocked))
 			return false;
-		if (account_non_expired == null) {
-			if (other.account_non_expired != null)
+		if (credentialsNonExpired == null) {
+			if (other.credentialsNonExpired != null)
 				return false;
-		} else if (!account_non_expired.equals(other.account_non_expired))
-			return false;
-		if (credentials_non_expired == null) {
-			if (other.credentials_non_expired != null)
-				return false;
-		} else if (!credentials_non_expired.equals(other.credentials_non_expired))
+		} else if (!credentialsNonExpired.equals(other.credentialsNonExpired))
 			return false;
 		if (enabled == null) {
 			if (other.enabled != null)
@@ -238,6 +239,4 @@ public class User implements UserDetails, Serializable{
 			return false;
 		return true;
 	}
-
-	
 }

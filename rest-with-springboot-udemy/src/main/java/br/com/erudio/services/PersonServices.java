@@ -15,7 +15,7 @@ import br.com.erudio.data.model.Person;
 import br.com.erudio.data.vo.v1.PersonVO;
 import br.com.erudio.data.vo.v2.PersonVOV2;
 import br.com.erudio.exception.ResourceNotFoundException;
-import br.com.erudio.respository.PersonRepository;
+import br.com.erudio.repository.PersonRepository;
 
 @Service
 public class PersonServices {

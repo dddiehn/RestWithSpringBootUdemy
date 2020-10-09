@@ -1,5 +1,7 @@
 package br.com.erudio.data.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "permission")
-public class Permission implements GrantedAuthority{
+public class Permission implements GrantedAuthority, Serializable{
 
 	private static final long serialVersionUID = 1L;
 
